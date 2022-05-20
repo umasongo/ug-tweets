@@ -35,23 +35,23 @@
 ;;; 1.
 ;;; Return the raw tweets based on the get request below
 ;;; this is also where we build our query using lists of pair (key/value)
-(define raw-tweets (read-csv file-path))
+(define raw_tweets (read-csv file-path))
 ;;raw_tweets
 
 ;;; 2.
 ;;; Remove just the tweet text, source, and timestamp from each tweet hash.
 ;;;Finally, remove retweets.
 (define data
-  (let ([tmp (map (λ (x) (list (list-ref x 0))) raw-tweets)])
+  (let ([tmp (map (λ (x) (list (list-ref x 0))) raw_tweets)])
     (filter (λ (x) (not (string-prefix? (first x) "RT"))) tmp)))
 
 ;;; 3.
 ;;; Remove empty strings and flatten tweets into a single list of words
-(define flat-data (flatten data))
+(define flat_data (flatten data))
 
 ;;; 4.
 ;;; Combine all tweets into a single string
-(define all_tweet-text (apply string-append flat-data))
+(define all_tweet-text (apply string-append flat_data))
 
 
 ;;; ---------------------------------------------------------------
